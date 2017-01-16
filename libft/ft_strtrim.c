@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qho <qho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/08 23:40:46 by qho               #+#    #+#             */
-/*   Updated: 2017/01/16 15:31:15 by qho              ###   ########.fr       */
+/*   Created: 2016/09/27 21:06:10 by qho               #+#    #+#             */
+/*   Updated: 2016/10/17 14:05:43 by qho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <stdlib.h>
+char	*ft_strtrim(char const *s)
+{
+	char	*ret;
+	int		str;
+	int		end;
+	int		j;
 
-# include <stdio.h>
-
-# include "libft/libft.h"
-
-# define BUFF_SIZE 10
-
-int get_next_line(const int fd, char **line);
-
-#endif
+	ret = NULL;
+	j = 0;
+	str = 0;
+	if (s)
+	{
+		end = ft_strlen(s) - 1;
+		str = find_start(str, s);
+		end = find_end(end, s);
+		ret = (char *)malloc(sizeof(char) * (ft_absolute_val(end - str) + 1));
+		if (ret)
+		{
+			while (str < end)
+				ret[j++] = s[str++];
+			ret[j] = '\0';
+		}
+	}
+	return (ret);
+}

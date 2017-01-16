@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qho <qho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/08 23:40:46 by qho               #+#    #+#             */
-/*   Updated: 2017/01/16 15:31:15 by qho              ###   ########.fr       */
+/*   Created: 2016/09/24 16:05:11 by qho               #+#    #+#             */
+/*   Updated: 2016/10/10 16:40:13 by qho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <stdlib.h>
+char	*ft_strstr(const char *big, const char *little)
+{
+	char	*str;
+	char	*match;
 
-# include <stdio.h>
-
-# include "libft/libft.h"
-
-# define BUFF_SIZE 10
-
-int get_next_line(const int fd, char **line);
-
-#endif
+	if (!*little)
+		return ((char *)big);
+	while (*big)
+	{
+		if (*big == *little)
+		{
+			str = (char *)big;
+			match = (char *)little;
+			while (*str && *match && *str == *match)
+			{
+				str++;
+				match++;
+			}
+			if (!*match)
+				return ((char *)big);
+		}
+		big++;
+	}
+	return (0);
+}

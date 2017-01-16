@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qho <qho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/08 23:40:46 by qho               #+#    #+#             */
-/*   Updated: 2017/01/16 15:31:15 by qho              ###   ########.fr       */
+/*   Created: 2016/09/24 19:52:28 by qho               #+#    #+#             */
+/*   Updated: 2016/09/25 18:10:19 by qho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <stdlib.h>
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	unsigned char *s1a;
+	unsigned char *s2a;
 
-# include <stdio.h>
-
-# include "libft/libft.h"
-
-# define BUFF_SIZE 10
-
-int get_next_line(const int fd, char **line);
-
-#endif
+	s1a = (unsigned char *)s1;
+	s2a = (unsigned char *)s2;
+	while (n)
+	{
+		if (*s1a == *s2a)
+		{
+			s1a++;
+			s2a++;
+		}
+		else
+			return (*s1a - *s2a);
+		n--;
+	}
+	return (0);
+}

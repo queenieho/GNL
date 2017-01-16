@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qho <qho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/08 23:40:46 by qho               #+#    #+#             */
-/*   Updated: 2017/01/16 15:31:15 by qho              ###   ########.fr       */
+/*   Created: 2016/09/22 11:37:29 by qho               #+#    #+#             */
+/*   Updated: 2017/01/06 19:21:28 by qho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <stdlib.h>
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	int				i;
+	unsigned char	*s1a;
+	unsigned char	*s2a;
 
-# include <stdio.h>
-
-# include "libft/libft.h"
-
-# define BUFF_SIZE 10
-
-int get_next_line(const int fd, char **line);
-
-#endif
+	i = 0;
+	s1a = (unsigned char *)s1;
+	s2a = (unsigned char *)s2;
+	if (s1a[i] == '\0')
+		return (s1a[i] - s2a[i]);
+	while (s1a[i] != '\0' || s2a[i] != '\0')
+	{
+		if (s2a[i] == '\0')
+			return (s1a[i]);
+		else if (s2a[i] != s1a[i])
+			return (s1a[i] - s2a[i]);
+		i++;
+	}
+	return (0);
+}
