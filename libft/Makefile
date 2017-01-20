@@ -6,7 +6,7 @@
 #    By: qho <qho@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/25 18:30:36 by qho               #+#    #+#              #
-#    Updated: 2016/12/20 15:13:48 by qho              ###   ########.fr        #
+#    Updated: 2016/10/17 15:49:20 by qho              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,27 +89,23 @@ HEADER = includes
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@ar rc $(NAME) $(OBJ)
-	@ranlib $(NAME)
-	@echo "\033[32mlibft.a made"
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
 
 $(OBJ) : $(SRC)
-	@$(CC) -c $(CFLAGS) $(SRC) -I $(HEADER)
-	@echo "\033[32mObject files made"
+	$(CC) -c $(CFLAGS) $(SRC) -I $(HEADER)
 
 comp:
-	@$(CC) $(CFLAGS) -o test libft_tests.c $(NAME)
+	$(CC) $(CFLAGS) -o test libft_tests.c $(NAME)
 
 norm:
-	@norminette $(SRC) libft.h
+	norminette $(SRC) libft.h
 
 clean:
-	@/bin/rm -f $(OBJ)
-	@echo "\033[31mCleaning object files"
+	/bin/rm -f $(OBJ)
 
 fclean: clean
-	@/bin/rm -f $(NAME)
-	@echo "\033[31mCleaning libft.a"
+	/bin/rm -f $(NAME)
 
 re: fclean all
 	

@@ -6,13 +6,13 @@
 /*   By: qho <qho@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 11:17:01 by qho               #+#    #+#             */
-/*   Updated: 2016/10/01 16:08:17 by qho              ###   ########.fr       */
+/*   Updated: 2016/10/26 14:18:00 by qho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	unsigned int i;
 
